@@ -3,6 +3,15 @@ import os
 from datetime import datetime
 import json
 
+# Load API keys from Streamlit secrets (for cloud) or environment (for local)
+def get_api_key(key_name):
+    # Try Streamlit secrets first (for cloud deployment)
+    try:
+        return st.secrets[key_name]
+    except (FileNotFoundError, KeyError):
+        # Fall back to environment variables (for local development)
+        return os.getenv(key_name, "")
+
 # Import the AI agent modules
 from agent_core import MentalHealthAgent
 from document_processor import DocumentProcessor
@@ -63,11 +72,11 @@ with st.sidebar:
     
     st.subheader("🔑 API Keys")
     openai_key = st.text_input("OpenAI API Key", type="password", 
-                                value=os.getenv("OPENAI_API_KEY", ""))
+                                value=get_api_key("OPENAI_API_KEY"))
     claude_key = st.text_input("Claude API Key", type="password",
-                               value=os.getenv("ANTHROPIC_API_KEY", ""))
+                               value=get_api_key("ANTHROPIC_API_KEY"))
     grok_key = st.text_input("Grok API Key", type="password",
-                             value=os.getenv("XAI_API_KEY", ""))
+                             value=get_api_key("XAI_API_KEY"))
     
     st.subheader("⚙️ Agent Settings")
     temperature = st.slider("Response Creativity", 0.0, 1.0, 0.7)
