@@ -4,4 +4,27 @@ openai==1.14.0
 PyPDF2==3.0.1
 python-docx==1.1.0
 requests==2.31.0
-python-dotenv==1.0.1
+```
+
+**Note:** Remove `python-dotenv` for cloud deployment (not needed)
+
+---
+
+## 🎯 Quick Deployment Checklist
+
+- [ ] GitHub account created
+- [ ] Repository created
+- [ ] Files uploaded (except .env)
+- [ ] Streamlit Cloud account created
+- [ ] App deployed
+- [ ] API keys added to Secrets
+- [ ] `app.py` modified to use `st.secrets`
+- [ ] App is running!
+
+---
+
+## 🌐 Your App URL
+
+After deployment, you'll get a URL like:
+```
+https://your-username-mental-health-agent-app-abc123.streamlit.app
