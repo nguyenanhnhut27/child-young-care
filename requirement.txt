@@ -1,6 +1,0 @@
-streamlit
-anthropic
-openai
-PyPDF2
-python-docx
-requests
